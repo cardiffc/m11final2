@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class Node {
     private String root;
-    public  HashSet<String> childs = new HashSet<>();
+    public List<Node> childs = new ArrayList<>();
 
     public Node(String root) {
         this.root = root;
@@ -12,11 +14,11 @@ public class Node {
         return root;
     }
 
-    public HashSet<String> getChilds() {
+    public List<Node> getChilds() {
         return childs;
     }
 
-    public void setChilds(HashSet<String> childs) {
+    public void setChilds(List<Node> childs) {
         this.childs = childs;
     }
 }

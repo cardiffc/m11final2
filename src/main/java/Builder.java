@@ -1,7 +1,10 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.RecursiveTask;
 
@@ -24,14 +27,15 @@ public class Builder extends RecursiveTask<HashSet> {
             ex.printStackTrace();
         }
         Elements preChilds = doc.select("a");
+       // ArrayList<Node> n
         preChilds.forEach(pc -> {
             String child = pc.attr("abs:href");
-            if (addUrl(child) && checkUrl(child)) {
-                node.childs.add(child);
+            if (checkUrl(child) && addUrl(child)) {
+                node.childs.add(new Node(child));
             }
 
         });
-        node.getChilds().forEach(System.out::println);
+        node.getChilds().forEach(el -> System.out.println(el.getRoot()));
 
 
 
