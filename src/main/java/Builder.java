@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.concurrent.RecursiveTask;
 
-public class Builder extends RecursiveTask<HashSet> {
+public class Builder extends RecursiveTask<TreeSet> {
 
     private Node node;
 
@@ -17,7 +18,7 @@ public class Builder extends RecursiveTask<HashSet> {
 
 
     @Override
-    protected HashSet compute() {
+    protected TreeSet compute() {
         String root = node.getRoot();
         Document doc = null;
         try {
@@ -34,7 +35,7 @@ public class Builder extends RecursiveTask<HashSet> {
             }
 
         });
-        HashSet<String> tempResult = new HashSet<>();
+        TreeSet<String> tempResult = new TreeSet<>();
         for (Node child : node.getChilds()) {
             tempResult.add(child.getRoot());
         }
